@@ -1,15 +1,27 @@
 /* eslint-disable prettier/prettier */
-import * as mongoose from 'mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
+import { BaseEntity } from 'src/models/BaseEntity';
 
-export const UserSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  surname: { type: String, required: true },
-  points: { type: Number, required: true },
-});
+export type UserDocument = User & Document;
 
-export interface User extends mongoose.Document {
-  id: string;
-  name: string;
-  surname: string;
-  points: number;
+@Schema()
+export class User extends BaseEntity {
+  @Prop({ required: true })
+  username: string;
+
+  @Prop({ required: true })
+  email: string;
+
+  @Prop({ required: true })
+  role: string;
+
+  @Prop({ required: true })
+  password: string;
+  @Prop()
+  site: string;
+  @Prop()
+  location: number;
 }
+
+export const UserSchema = SchemaFactory.createForClass(User);
