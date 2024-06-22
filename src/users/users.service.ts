@@ -1,28 +1,17 @@
 /* eslint-disable prettier/prettier */
-import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Inject, Injectable } from '@nestjs/common';
 import { User } from './users.model';
+import { Service } from 'src/services/Service';
+import { IUserService } from 'src/services/user/IUserService';
+import { IUserRepository } from 'src/repository/users/IUserRepository';
 
 @Injectable()
-export class UsersService {
-  constructor(@InjectModel('User') private readonly userModel: Model<User>) {}
-
-  /**
-   * Create a new user
-   * @param name
-   * @param email
-   * @param password
-   */
-  async create(name: string, email: string, password: string): Promise<User> {
-    const createdUser = new this.userModel({ name, email, password });
-    return createdUser.save();
-  }
-
-  /**
-   * Find all users
-   */
-  async findAll(): Promise<User[]> {
-    return this.userModel.find().exec();
+export class UsersService extends Service<User> implements IUserService {
+  constructor(
+    @Inject('IUserRepository')
+    private readonly users_repository: IUserRepository,
+  ) {
+    super(users_repository);
   }
 }
+

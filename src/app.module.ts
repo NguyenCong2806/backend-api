@@ -1,37 +1,50 @@
 /* eslint-disable prettier/prettier */
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { ConfigModule } from '@nestjs/config';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
 import { AppService } from './app.service';
+import { JwtModule } from '@nestjs/jwt/dist';
+import { LoggerMiddleware } from './middlewares/logger.middleware';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     ThrottlerModule.forRoot([
       {
-        ttl: 60,
-        limit: 10,
+        name: 'short',
+        ttl: 1000,
+        limit: 3,
+      },
+      {
+        name: 'medium',
+        ttl: 10000,
+        limit: 20,
+      },
+      {
+        name: 'long',
+        ttl: 60000,
+        limit: 100,
       },
     ]),
-    MongooseModule.forRoot(
-      //process.env.DATABASE_URL + process.env.DATABASE_NAME +'?directConnection=true',
-      'mongodb://database:27017/data_web'
-    ),
-    // MongooseModule.forRoot(process.env.DATABASE_URI, {
-    //   dbName: process.env.DATABASE_NAME,
-    //   auth: {
-    //     username: process.env.DATABASE_USER,
-    //     password: process.env.DATABASE_PASS,
-    //   },
-    // }),
-
+    MongooseModule.forRoot(process.env.DATABASE_URL, {
+      dbName: process.env.DATABASE_NAME,
+      // auth: {
+      //   username: process.env.DATABASE_USER,
+      //   password: process.env.DATABASE_PASS,
+      // },
+    }),
+    JwtModule,
     // feature module
     UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer): void {
+    consumer.apply(LoggerMiddleware).forRoutes('*');
+  }
+}
