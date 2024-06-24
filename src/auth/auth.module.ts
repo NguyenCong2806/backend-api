@@ -6,8 +6,8 @@ import { ConfigModule } from '@nestjs/config';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { UsersModule } from 'src/users/users.module';
-import { AccessTokenStrategy } from 'src/utils/strategies/accessToken.strategy';
-import { RefreshTokenStrategy } from 'src/utils/strategies/refreshToken.strategy';
+import { RefreshTokenStrategy } from './../utils/strategies/refreshToken.strategy';
+import { AccessTokenStrategy } from './../utils/strategies/accesstoken.strategy';
 @Module({
   imports: [
     ConfigModule.forRoot(),
