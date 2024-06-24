@@ -8,9 +8,10 @@ import { UsersModule } from './users/users.module';
 import { AppService } from './app.service';
 import { JwtModule } from '@nestjs/jwt/dist';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
-
+import { FileModule } from './file/file.module';
 @Module({
   imports: [
+     //system module
     ConfigModule.forRoot({ isGlobal: true }),
     ThrottlerModule.forRoot([
       {
@@ -39,6 +40,7 @@ import { LoggerMiddleware } from './middlewares/logger.middleware';
     JwtModule,
     // feature module
     UsersModule,
+    FileModule,
   ],
   controllers: [AppController],
   providers: [AppService],
