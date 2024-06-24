@@ -10,6 +10,7 @@ import { JwtModule } from '@nestjs/jwt/dist';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { FileModule } from './file/file.module';
 import { AuthModule } from './auth/auth.module';
+import { CarouselModule } from './Carousel/carousel.module';
 @Module({
   imports: [
      //system module
@@ -41,6 +42,7 @@ import { AuthModule } from './auth/auth.module';
     JwtModule,
     // feature module
     AuthModule,
+    CarouselModule,
     UsersModule,
     FileModule,
   ],
