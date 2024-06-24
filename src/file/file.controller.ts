@@ -33,13 +33,17 @@ export class FileController {
   }
   @Delete('deletefile/:filename')
   async deletefile(@Param('filename') filename: string, @Res() res: Response) {
-    fs.unlinkSync(process.env.FILE_ROOT + '/' + filename);
-    res.status(200).json(message.Delete_Successful);
+    await fs.unlinkSync(process.env.FILE_ROOT + '/' + filename);
+    const _data = new ResultData();
+    _data.item = message.File_deleted;
+    _data.message = message.Delete_Successful;
+    _data.status = true;
+    _data.statuscode = httpstatus.Successful_responses;
+    res.status(200).json(_data);
   }
   @Post('upload')
   @UseInterceptors(FileInterceptor('file', { storage: storage }))
   uploadFile(@UploadedFile() file, @Res() res: Response) {
-    console.log(file);
     const mediaInfo = new MediaInfo();
     const _data = new ResultData();
 

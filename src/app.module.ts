@@ -9,6 +9,7 @@ import { AppService } from './app.service';
 import { JwtModule } from '@nestjs/jwt/dist';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { FileModule } from './file/file.module';
+import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [
      //system module
@@ -39,6 +40,7 @@ import { FileModule } from './file/file.module';
     }),
     JwtModule,
     // feature module
+    AuthModule,
     UsersModule,
     FileModule,
   ],

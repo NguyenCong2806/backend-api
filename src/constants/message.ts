@@ -16,4 +16,5 @@ export const message = {
 
   Download_data_successfully: 'Tải dữ liệu thành công',
   Download_data_failed: 'Tải dữ liệu thất bại!',
+  File_deleted: 'file has been deleted',
 };
