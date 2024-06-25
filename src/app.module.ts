@@ -11,6 +11,7 @@ import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { FileModule } from './file/file.module';
 import { AuthModule } from './auth/auth.module';
 import { CarouselModule } from './Carousel/carousel.module';
+import { LogoModule } from './Logo/logo.module';
 @Module({
   imports: [
      //system module
@@ -43,6 +44,7 @@ import { CarouselModule } from './Carousel/carousel.module';
     // feature module
     AuthModule,
     CarouselModule,
+    LogoModule,
     UsersModule,
     FileModule,
   ],
