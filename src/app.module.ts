@@ -12,9 +12,10 @@ import { FileModule } from './file/file.module';
 import { AuthModule } from './auth/auth.module';
 import { CarouselModule } from './Carousel/carousel.module';
 import { LogoModule } from './Logo/logo.module';
+import { AccordionModule } from './Accordion/accordion.module';
 @Module({
   imports: [
-     //system module
+    //system module
     ConfigModule.forRoot({ isGlobal: true }),
     ThrottlerModule.forRoot([
       {
@@ -45,6 +46,7 @@ import { LogoModule } from './Logo/logo.module';
     AuthModule,
     CarouselModule,
     LogoModule,
+    AccordionModule,
     UsersModule,
     FileModule,
   ],
