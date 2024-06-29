@@ -16,7 +16,7 @@ export class Advertisement extends BaseEntity {
   @Prop()
   location: number;
   @Prop()
-  site: string;
+  site: number;
 }
 
 export const AdvertisementSchema = SchemaFactory.createForClass(Advertisement);

@@ -14,6 +14,7 @@ import { CarouselModule } from './Carousel/carousel.module';
 import { LogoModule } from './Logo/logo.module';
 import { AccordionModule } from './Accordion/accordion.module';
 import { AdvertisementModule } from './Advertisement/advertisement.module';
+import { ArticleHeaderModule } from './ArticleHeader/articleheader.module';
 @Module({
   imports: [
     //system module
@@ -49,6 +50,7 @@ import { AdvertisementModule } from './Advertisement/advertisement.module';
     LogoModule,
     AccordionModule,
     AdvertisementModule,
+    ArticleHeaderModule,
     UsersModule,
     FileModule,
   ],
