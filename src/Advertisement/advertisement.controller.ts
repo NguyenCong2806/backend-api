@@ -45,7 +45,7 @@ export class AdvertisementController {
   @AuthMetaData('skipAuthCheck')
   @Get('getfind')
   async finds(@Query() parainfo: SiteParameter, @Res() res: Response) {
-    const _datasite = { site: { $regex: parainfo.sitename } } as any;
+    const _datasite = { site: parseInt(parainfo.sitename, 10) } as any;
     const _dataloca = { location: parseInt(parainfo.location, 10) } as any;
     const _datas = [_datasite, _dataloca];
     const respo = await this.advertisementService.findconditions(_datas);

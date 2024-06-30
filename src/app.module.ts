@@ -15,6 +15,7 @@ import { LogoModule } from './Logo/logo.module';
 import { AccordionModule } from './Accordion/accordion.module';
 import { AdvertisementModule } from './Advertisement/advertisement.module';
 import { ArticleHeaderModule } from './ArticleHeader/articleheader.module';
+import { BoxImageTextModule } from './BoxImageText/boximagetext.module';
 @Module({
   imports: [
     //system module
@@ -51,6 +52,7 @@ import { ArticleHeaderModule } from './ArticleHeader/articleheader.module';
     AccordionModule,
     AdvertisementModule,
     ArticleHeaderModule,
+    BoxImageTextModule,
     UsersModule,
     FileModule,
   ],
