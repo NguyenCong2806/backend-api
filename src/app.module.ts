@@ -16,6 +16,7 @@ import { AccordionModule } from './Accordion/accordion.module';
 import { AdvertisementModule } from './Advertisement/advertisement.module';
 import { ArticleHeaderModule } from './ArticleHeader/articleheader.module';
 import { BoxImageTextModule } from './BoxImageText/boximagetext.module';
+import { CardModule } from './Card/card.module';
 @Module({
   imports: [
     //system module
@@ -53,6 +54,7 @@ import { BoxImageTextModule } from './BoxImageText/boximagetext.module';
     AdvertisementModule,
     ArticleHeaderModule,
     BoxImageTextModule,
+    CardModule,
     UsersModule,
     FileModule,
   ],
