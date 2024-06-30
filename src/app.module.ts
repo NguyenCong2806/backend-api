@@ -17,6 +17,7 @@ import { AdvertisementModule } from './Advertisement/advertisement.module';
 import { ArticleHeaderModule } from './ArticleHeader/articleheader.module';
 import { BoxImageTextModule } from './BoxImageText/boximagetext.module';
 import { CardModule } from './Card/card.module';
+import { CardNumbersModule } from './CardNumbers/cardnumbers.module';
 @Module({
   imports: [
     //system module
@@ -55,6 +56,7 @@ import { CardModule } from './Card/card.module';
     ArticleHeaderModule,
     BoxImageTextModule,
     CardModule,
+    CardNumbersModule,
     UsersModule,
     FileModule,
   ],
