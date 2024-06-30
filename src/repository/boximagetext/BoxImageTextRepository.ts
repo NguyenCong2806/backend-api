@@ -2,14 +2,14 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { IBoximagetextRepository } from './IBoximagetextRepository';
+import { IBoxImageTextRepository } from './IBoxImageTextRepository';
 import { Repository } from '../Repository';
 import { BoxImageText } from 'src/BoxImageText/boximagetext.model';
 
 @Injectable()
-export class BoximagetextRespository
+export class BoxImageTextRepository
   extends Repository<BoxImageText>
-  implements IBoximagetextRepository
+  implements IBoxImageTextRepository
 {
   constructor(
     @InjectModel(BoxImageText.name)
