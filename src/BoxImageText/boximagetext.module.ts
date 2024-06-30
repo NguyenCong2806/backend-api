@@ -1,12 +1,11 @@
 /* eslint-disable prettier/prettier */
+import { BoxImageTextRepository } from 'src/repository/boximagetext/BoxImageTextRepository';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { JwtModule } from '@nestjs/jwt';
 import { BoxImageTextSchema } from './boximagetext.model';
 import { BoxImageTextController } from './boximagetext.controller';
 import { BoximagetextService } from './boximagetext.service';
-import { BoximagetextRespository } from 'src/repository/boximagetext/BoxImageTextRepository';
-
 @Module({
   imports: [
     MongooseModule.forFeature([
@@ -18,8 +17,8 @@ import { BoximagetextRespository } from 'src/repository/boximagetext/BoxImageTex
   providers: [
     BoximagetextService,
     {
-      provide: 'IBoximagetextRepository',
-      useClass: BoximagetextRespository,
+      provide: 'IBoxImageTextRepository',
+      useClass: BoxImageTextRepository,
     },
   ],
   exports: [BoximagetextService],
